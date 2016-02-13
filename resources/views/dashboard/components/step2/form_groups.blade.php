@@ -34,31 +34,42 @@
                 </label>
                 <br>
                 <p class="help-block text-danger">
-                    <strong>{{ $errors->first('email') }}</strong></p>
+                    <strong>{{ $errors->first('assignment_type') }}</strong></p>
             </div>
             <br>
 
-
+            <?php
+            $hiddenChangeType = '';
+            $yesChecked = 'checked';
+            $noChecked = '';
+            ?>
+            @if(!$errors->has('change_type'))
+                <?php
+                $hiddenChangeType = 'hidden';
+                $yesChecked = '';
+                $noChecked = 'checked';
+                ?>
+            @endif
             <div class="field ">
                 {!! Form::label('allow_group_changes','Permitir cambios de grupos',['class'=>'main_label']) !!}
                 <label class="radio inline">
-                    <input type="radio" value="0" name="allow_group_changes" checked> No
+                    <input type="radio" value="0" name="allow_group_changes" {{$noChecked}}> No
                 </label>
                 <label class="radio inline">
-                    <input type="radio" value="1" name="allow_group_changes"> Si
+                    <input type="radio" value="1" name="allow_group_changes" {{$yesChecked}}> Si
                 </label>
 
                 <br>
                 <p class="help-block text-danger">
-                    <strong>{{ $errors->first('email') }}</strong></p>
+                    <strong>{{ $errors->first('allow_group_changes') }}</strong></p>
             </div>
 
+            <div class="field allow_type" {{$hiddenChangeType}}>
 
-            <div class="field allow_type" hidden>
                 <ul>
                     <li>
                         <label class="radio inline">
-                            <input type="radio" disabled name="assignment_type">De 1 &nbsp;&nbsp;&nbsp;
+                            <input type="radio" disabled name="change_type">De 1 &nbsp;&nbsp;&nbsp;
                             <input id="students_range"
                                    width="10"
                                    type="text"
@@ -73,26 +84,26 @@
                     </li>
                     <li>
                         <label class="radio inline">
-                            <input type="radio" disabled name="assignment_type"> Cambios alumno a alumno
+                            <input type="radio" disabled name="change_type"> Cambios alumno a alumno
                         </label>
                         <br>
                     </li>
                     <li>
                         <label class="radio inline">
-                            <input type="radio" disabled name="assignment_type"> Solo cambios autorizados
+                            <input type="radio" disabled name="change_type"> Solo cambios autorizados
                         </label>
                         <br>
                     </li>
                 </ul>
                 <p class="help-block text-danger">
-                    <strong>{{ $errors->first('email') }}</strong></p>
+                    <strong>{{ $errors->first('change_type') }}</strong></p>
             </div>
             <br>
-            <div class="field allow_type" hidden>
+            <div class="field allow_type" {{$hiddenChangeType}}>
                 {!! Form::label('max_date','Fecha límite',['class'=>'main_label']) !!}
                 {!! Form::text('max_date','',['id'=>'max_date','class'=>'form-control login']) !!}
                 <p class="help-block text-danger">
-                    <strong>{{ $errors->first('subject') }}</strong></p>
+                    <strong>{{ $errors->first('max_date') }}</strong></p>
             </div>
         </div>
     </div>

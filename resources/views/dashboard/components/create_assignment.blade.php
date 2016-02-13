@@ -26,6 +26,8 @@
                                            href="#">
                                             <i class="icon-paste"></i><br>Pegar tabla
                                         </a>
+                                        <p class="help-block text-danger">
+                                            <strong>{{ $errors->first('table_row') }}</strong></p>
                                 </tr>
                             </table>
                         </div>

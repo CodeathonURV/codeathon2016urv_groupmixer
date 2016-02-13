@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Commands\Step2Command;
 use App\User;
+use Config;
 use Input;
 use Redirect;
 use Request;
@@ -37,16 +38,18 @@ class DashboardController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return $this|\Illuminate\Http\RedirectResponse
      */
     public function saveStep1()
     {
 
         $validator = Validator::make(Input::all(), [
-            'file' => 'mimes:xls,xlms,xlsx'
+            'file' => 'required_without_all:table_row|mimes:xls,xlms,xlsx',
+            'table_row' => 'required_without_all:file'
         ], [
-            'file.mimes'=>'Por favor, introduzca un archivo con los formatos :values.'
+            'file.mimes' => 'Por favor, introduzca un archivo con los formatos :values.',
+            'file.required_without_all' => 'Por favor, introduzca un archivo con los formatos.',
+            'table_row.required_without_all' => 'Por favor, introduzca un archivo con los formatos.',
         ]);
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator->errors());
@@ -69,31 +72,35 @@ class DashboardController extends Controller
     public function createStep2()
     {
         $teachers = $this->step2Command->getListTeacherAndCoordinators();
+
         return View::make('dashboard.step2', compact('teachers'));
     }
 
 
     public function saveStep2()
     {
-        dd(Input::all());
+
+        $validator = Validator::make(Input::all(),
+            [
+                'subject' => 'required|min:3',
+                'number_groups' => 'required|numeric|digits_between:' . Config::get('formatter.minGroups') . ',' . Config::get('formatter.maxGroups'),
+                'assignment_type' => 'required|in:0,1,2',
+                'allow_group_changes' => 'required|in:0,1',
+                'change_type' => 'required_if:allow_group_changes,1',
+                'max_date' => 'required_if:allow_group_changes,1',
+            ]
+        );
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator->errors());
+        }
+
+        //dd(Input::all());
+        return Redirect::route('create_step_3');
     }
 
-
-    /**
-     *
-     */
-    public function upload()
+    public function createStep3()
     {
-
-        foreach (Input::all() as $item) {
-
-            $imageName = 'test.' .
-                $item->getClientOriginalExtension();
-
-            $item->move(
-                base_path() . '/public/files/', $imageName
-            );
-        }
-        dd(Input::all());
+        $numberRows = 10;
+        return View::make('dashboard.step3', compact('numberRows'));
     }
 }

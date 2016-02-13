@@ -30,6 +30,9 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get('/step_2', ['as' => 'create_step_2', 'uses' => 'DashboardController@createStep2']);
         Route::post('/step_2', ['as' => 'save_step_2', 'uses' => 'DashboardController@saveStep2']);
+
+        Route::get('/step_3', ['as' => 'create_step_3', 'uses' => 'DashboardController@createStep3']);
+
     });
 
     Route::get('/login', ['as' => 'login.create', 'uses' => 'LoginController@createLogin']);
