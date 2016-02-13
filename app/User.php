@@ -43,6 +43,7 @@ class User extends Authenticatable
     public function createWithRole(array $user)
     {
         $roleId = $user['role'];
+        unset($user['role']);
         $user = $this->create($user);
 
 

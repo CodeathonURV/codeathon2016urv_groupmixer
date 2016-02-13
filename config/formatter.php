@@ -9,5 +9,7 @@ return [
             'password' => 'password',
             'user_type' => 'role'
         ]
-    ]
+    ],
+    'minGroups' => 2,
+    'maxGroups' => 10
 ];

@@ -7,7 +7,7 @@
             </div>
             <div class="widget-content">
                 <div class="tabbable">
-                    {!! Form::open() !!}
+                    {!! Form::open(['route'=>'save_step_1','enctype'=>'multipart/form-data']) !!}
                     <div>
                         <h3 class="text-center">Seleccione que desea</h3>
                         <br>
@@ -36,13 +36,14 @@
                             {!! Form::submit('Siguiente paso',['class'=>'btn btn-success']) !!}
                         </div>
                     </div>
+                    <input name="file" class="hidden" type="file" id="file_hidden">
+
                     {!! Form::close() !!}
                 </div>
             </div>
         </div>
     </div>
 </div>
-<input name="file" class="hidden" type="file" id="file_hidden">
 
 
 @push('js')
@@ -56,79 +57,9 @@
 
         $('#paste_table').click(function (e) {
             e.preventDefault();
-            console.log('a');
             $('#table_row').parent('div').slideToggle();
-
         });
-
-        var files;
-
-        $('input[type=file]').on('change', prepareUpload);
-
-        function prepareUpload(event) {
-            files = event.target.files;
-            uploadFiles(event);
-        }
-
-        $('form').on('submit', uploadFiles);
-
-        function uploadFiles(event) {
-            event.stopPropagation(); // Stop stuff happening
-            event.preventDefault(); // Totally stop stuff happening
-
-            var data = new FormData();
-            $.each(files, function (key, value) {
-                data.append(key, value);
-            });
-
-            $.ajax({
-                url: '{{route('file_upload')}}',
-                type: 'POST',
-                data: data,
-                cache: false,
-                dataType: 'json',
-                processData: false, // Don't process the files
-                contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                success: function (data, textStatus, jqXHR) {
-                    console.log(data);
-                    if (typeof data.error === 'undefined') {
-                        // Success so call function to process the form
-                        submitForm(event, data);
-                    }
-                    else {
-                        // Handle errors here
-                        console.log('ERRORS: ' + data.error);
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    // Handle errors here
-                    console.log('ERRORS: ' + textStatus);
-                    // STOP LOADING SPINNER
-                }
-            });
-        }
-
-
     });
 
-    function checkFileExtension(filename) {
-        var extension = filename.substr((filename.lastIndexOf('.') + 1));
-        switch (extension) {
-            case 'jpg':
-            case 'png':
-            case 'gif':
-                alert('was jpg png gif');  // There's was a typo in the example where
-                break;                         // the alert ended with pdf instead of gif.
-            case 'zip':
-            case 'rar':
-                alert('was zip rar');
-                break;
-            case 'pdf':
-                alert('was pdf');
-                break;
-            default:
-                alert('who knows');
-        }
-    }
-
-</script>@endpush
+</script>
+@endpush

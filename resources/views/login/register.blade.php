@@ -83,13 +83,3 @@
         </div>
     </div>
 @endsection
-
-{{--{!! Form::open(array('route' =>'login.save')) !!}
-
-{!! Form::text('name', 'Nombre') !!}
-{!! Form::text('DNI', '1111111Z') !!}
-{!! Form::email('email', 'example@gmail.com') !!}
-{!! Form::password('password') !!}
-{!! Form::select('user_type', $roles) !!}
-{!! Form::submit('Guardar') !!}
-{!! Form::close() !!}--}}
