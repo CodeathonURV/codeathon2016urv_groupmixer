@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\User;
+use Bican\Roles\Models\Role;
 use Input;
 use View;
 use Excel;
@@ -34,15 +35,20 @@ class DashboardController extends Controller
     public function createStep2()
     {
 
-        $users = $this->user->get();
-        foreach ($users as $user) {
+        $posts = $this->user->whereHas('roles', function ($query) {
+            $query->orWhere('roles.id', '=', '2');
+            $query->where('roles.id', '=', '1');
+        })->get(['id', 'name']);
 
-            dd($user->roles()->get());
 
+        $teachers = [];
+        foreach ($posts as $post) {
+            $teachers[$post->id] = $post->name;
 
         }
 
-        return View::make('dashboard.step2');
+
+        return View::make('dashboard.step2', compact('teachers'));
     }
 
 

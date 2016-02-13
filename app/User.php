@@ -36,6 +36,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+
+
+
+
+
     /**
      * @param array $user
      * @return $this
@@ -45,7 +51,6 @@ class User extends Authenticatable
         $roleId = $user['role'];
         unset($user['role']);
         $user = $this->create($user);
-
 
         $user->attachRole($roleId);
 

@@ -326,6 +326,17 @@ table.button_selector_table {
     margin-right: auto;
 
 }
-table.button_selector_table td{
+
+table.button_selector_table td {
     width: 50%;
+}
+
+.step2-fields label.main_label {
+    font-weight: bold;
+    font-size: 1.2em !important;
+
+}
+
+.allow_type_range{
+    width: 2em;
 }
