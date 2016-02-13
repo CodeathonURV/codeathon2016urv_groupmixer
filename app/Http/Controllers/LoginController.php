@@ -57,7 +57,6 @@ class LoginController extends Controller
                 ->withInput();
         }
 
-
         if ($this->loginCommand->checkLogin($request->all())) {
             return Redirect::route('dashboard');
         } else {

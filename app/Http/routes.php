@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -27,5 +23,14 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
+        Route::post('/', ['as' => 'file_upload', 'uses' => 'DashboardController@upload']);
+    });
+
+    Route::get('/login', ['as' => 'login.create', 'uses' => 'LoginController@createLogin']);
+    Route::post('/login', ['as' => 'login.save', 'uses' => 'LoginController@saveLogin']);
+    Route::get('/register', ['as' => 'register.create', 'uses' => 'LoginController@createRegister']);
+    Route::post('/register', ['as' => 'register.save', 'uses' => 'LoginController@saveRegister']);
 });

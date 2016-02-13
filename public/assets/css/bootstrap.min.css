@@ -2432,7 +2432,7 @@ table .span24 {
     background-image: -moz-linear-gradient(rgba(85, 85, 85, 0), rgba(0, 0, 0, 0.1));
     background-image: -o-linear-gradient(rgba(85, 85, 85, 0), rgba(0, 0, 0, 0.1));
     background-image: linear-gradient(rgba(85, 85, 85, 0), rgba(0, 0, 0, 0.1));
-    background-color: #555555;
+    background-color: #1976D2;
     border-color: #464646 #464646 #1f1f1f;
     border-color: rgba(0, 0, 0, 0.05) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.15);
     color: white;
@@ -4415,4 +4415,15 @@ a.text-success:focus, a.text-success:hover {
 
 a.text-danger:focus, a.text-danger:hover {
     color: #843534
+}
+
+.btn-resize {
+    width: 50%;
+}
+
+textarea.table_row{
+    width: 75%;
+}
+div.text_row_div{
+    margin-top;: 0.5em;
 }

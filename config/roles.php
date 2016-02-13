@@ -2,6 +2,21 @@
 
 return [
 
+
+    'basic' => [
+        'coordinator' => [
+            'level' => 3,
+            'description' => 'Teacher who has all the control of what happens in the group'
+        ],
+        'teacher' => [
+            'level' => 2,
+            'description' => 'Teacher who has a limited control of the group, is a group\'s watcher.'
+        ],
+        'student' => [
+            'level' => 1,
+            'description' => 'Basic users. '
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | Package Connection
