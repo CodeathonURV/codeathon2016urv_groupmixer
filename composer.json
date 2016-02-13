@@ -6,7 +6,13 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "laravelcollective/html": "^5.2",
+        "bican/roles": "^2.1",
+        "barryvdh/laravel-debugbar": "^2.1",
+        "barryvdh/laravel-ide-helper": "^2.1",
+        "doctrine/dbal": "^2.5",
+        "maatwebsite/excel": "^2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -43,6 +49,8 @@
             "php artisan clear-compiled"
         ],
         "post-update-cmd": [
+            "php artisan clear-compiled",
+            "php artisan ide-helper:generate",
             "php artisan optimize"
         ]
     },
