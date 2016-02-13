@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'dni'
     ];
 
     /**
@@ -35,4 +35,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * @param array $user
+     * @return $this
+     */
+    public function createWithRole(array $user)
+    {
+        $roleId = $user['role'];
+        $user = $this->create($user);
+
+
+        $user->attachRole($roleId);
+
+        return $this;
+    }
 }
