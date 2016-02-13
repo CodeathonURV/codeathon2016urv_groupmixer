@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\User;
 use Bican\Roles\Models\Role;
 use Input;
+use Redirect;
 use View;
 use Excel;
 
@@ -64,7 +65,7 @@ class DashboardController extends Controller
 
          });*/
 
-        dd(Input::all());
+        return Redirect::route('create_step_2');
     }
 
     /**

@@ -53,24 +53,36 @@
                 <p class="help-block text-danger">
                     <strong>{{ $errors->first('email') }}</strong></p>
             </div>
-            <br>
-            <div class="field " hidden id="allow_type">
-                {!! Form::label('assignment_type','Tipo asignación',['class'=>'main_label']) !!}
-
-
-                <label class="radio inline">
-                    <input type="radio" disabled name="assignment_type"> Lista en blanco
-                    <input type="text" class="allow_type_range">
-                </label>
-                <br>
-                <label class="radio inline">
-                    <input type="radio" disabled name="assignment_type"> Orden alfabetico
-                </label>
-                <br>
-                <label class="radio inline">
-                    <input type="radio" disabled name="assignment_type"> Asignación aleatoria
-                </label>
-                <br>
+            <div class="field" hidden id="allow_type">
+                <ul>
+                    <li>
+                        <label class="radio inline">
+                            <input type="radio" disabled name="assignment_type">De 1 &nbsp;&nbsp;&nbsp;
+                            <input id="students_range"
+                                   width="10"
+                                   type="text"
+                                   class="span2"
+                                   value=""
+                                   data-slider-min="1"
+                                   data-slider-max="50"
+                                   data-slider-step="1"
+                                   data-slider-value="[1,50]"/>&nbsp;&nbsp;&nbsp; a 50 alumnos
+                        </label>
+                        <br>
+                    </li>
+                    <li>
+                        <label class="radio inline">
+                            <input type="radio" disabled name="assignment_type"> Cambios alumno a alumno
+                        </label>
+                        <br>
+                    </li>
+                    <li>
+                        <label class="radio inline">
+                            <input type="radio" disabled name="assignment_type"> Solo cambios autorizados
+                        </label>
+                        <br>
+                    </li>
+                </ul>
                 <p class="help-block text-danger">
                     <strong>{{ $errors->first('email') }}</strong></p>
             </div>
@@ -81,33 +93,6 @@
 
 
 @push('js')
-<script>
-    $(document).ready(function () {
-
-        $('#number_groups').change(function () {
-            var numberOfGroups = $(this).val();
-            $("table.table_groups tbody tr").hide();
-            if (numberOfGroups > 0) {
-                $("table.table_groups tbody tr").slice(0, numberOfGroups).show();
-            }
-
-        });
-
-        $("input:radio[name='allow_group_changes']").click(function () {
-            var value = parseInt($(this).val());
-            if (value === 0) {
-                $('#allow_type').slideUp();
-                $('#allow_type input').attr('disabled', 'disabled');
-            } else {
-                $('#allow_type input').removeAttr('disabled');
-                $('#allow_type').slideDown();
-
-            }
-
-        });
-
-
-    });
-
-</script>
+{!! Html::script('assets/js/bootstrap_slider.js') !!}
+{!! Html::script('assets/js/step2.js') !!}
 @endpush

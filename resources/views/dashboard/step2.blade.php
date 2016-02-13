@@ -1,6 +1,7 @@
 @extends('layout.master')
 @push('css')
 {!! Html::style('assets/css/dashboard.css') !!}
+{!! Html::style('assets/css/bootrstrap_slider.css') !!}
 @endpush
 @section('title', 'Index')
 

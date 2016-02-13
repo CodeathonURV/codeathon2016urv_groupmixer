@@ -337,6 +337,15 @@ table.button_selector_table td {
 
 }
 
-.allow_type_range{
+.allow_type_range {
     width: 2em;
+    display: inline-flex;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.slider-horizontal {
+    width: 10em!important;
 }

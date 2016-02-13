@@ -47,7 +47,6 @@
 
 
 @push('js')
-{!! Html::script('assets/js/jquery-1.7.2.min.js') !!}
 <script>
     $(document).ready(function () {
         $('#file_upload').click(function (e) {
