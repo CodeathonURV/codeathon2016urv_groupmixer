@@ -37,11 +37,6 @@ class User extends Authenticatable
     ];
 
 
-
-
-
-
-
     /**
      * @param array $user
      * @return $this
@@ -55,5 +50,15 @@ class User extends Authenticatable
         $user->attachRole($roleId);
 
         return $this;
+    }
+
+    public function getTeacherAndCoordinators()
+    {
+        $users = $this->whereHas('roles', function ($query) {
+            $query->orWhere('roles.id', '=', '2');
+            $query->where('roles.id', '=', '1');
+        })->get(['id', 'name']);
+
+        return $users;
     }
 }

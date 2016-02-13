@@ -12,12 +12,22 @@ $(document).ready(function () {
     $("input:radio[name='allow_group_changes']").click(function () {
         var value = parseInt($(this).val());
         if (value === 0) {
-            $('#allow_type').slideUp();
-            $('#allow_type input').attr('disabled', 'disabled');
+            $('.allow_type').slideUp();
+            $('.allow_type input').attr('disabled', 'disabled');
         } else {
-            $('#allow_type input').removeAttr('disabled');
-            $('#allow_type').slideDown();
+            $('.allow_type input').removeAttr('disabled');
+            $('.allow_type').slideDown();
 
         }
     });
+
+    $('input#max_date').datepicker({
+        format: "dd/mm/yyyy",
+        weekStart: 1,
+        todayBtn: "linked",
+        language: "es",
+        todayHighlight: true,
+        orientation: "bottom right",
+    });
+
 });

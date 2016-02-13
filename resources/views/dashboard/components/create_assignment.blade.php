@@ -17,7 +17,10 @@
                                     <td>
                                         <a id="file_upload" class="btn-resize btn btn-large btn-inverse" href="#">
                                             <i class=" icon-upload-alt"></i><br>Importar fichero
-                                        </a></td>
+                                        </a>
+                                        <p class="help-block text-danger">
+                                            <strong>{{ $errors->first('file') }}</strong></p>
+                                    </td>
                                     <td>
                                         <a hidden id="paste_table" class="btn-resize btn btn-large btn-inverse"
                                            href="#">
@@ -36,7 +39,7 @@
                             {!! Form::submit('Siguiente paso',['class'=>'btn btn-success']) !!}
                         </div>
                     </div>
-                    <input name="file" class="hidden" type="file" id="file_hidden">
+                    <input name="file" class="hidden" type="file" id="file_excel">
 
                     {!! Form::close() !!}
                 </div>
@@ -51,7 +54,7 @@
     $(document).ready(function () {
         $('#file_upload').click(function (e) {
             e.preventDefault();
-            $('#file_hidden').click();
+            $('#file_excel').click();
         });
 
         $('#paste_table').click(function (e) {

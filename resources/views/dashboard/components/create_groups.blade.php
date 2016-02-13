@@ -5,6 +5,8 @@
                 <i class="icon-user"></i>
                 <h3>Paso 2</h3>
             </div>
+            {!! Form::open(array('route' =>'save_step_2')) !!}
+
             <div class="widget-content">
                 <div class="tabbable">
                     <div class="span4">
@@ -20,6 +22,7 @@
                     {!! Form::submit('Siguiente paso',['class'=>'btn btn-success']) !!}
                 </div>
             </div>
+            {!! Form::close() !!}
         </div>
     </div>
 </div>
@@ -32,7 +35,6 @@
             e.preventDefault();
             $('#file_hidden').click();
         });
-
         $('#paste_table').click(function (e) {
             e.preventDefault();
             $('#table_row').parent('div').slideToggle();

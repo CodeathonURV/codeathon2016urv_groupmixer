@@ -1,7 +1,6 @@
 <div class="account-container">
     <div class="content clearfix">
 
-        {!! Form::open(array('route' =>'register.save')) !!}
         <div class="step2-fields ">
             <div class="field ">
                 {!! Form::label('subject','Asignatura',['class'=>'main_label']) !!}
@@ -23,15 +22,15 @@
             <div class="field ">
                 {!! Form::label('assignment_type','Tipo asignación',['class'=>'main_label']) !!}
                 <label class="radio inline">
-                    <input type="radio" name="assignment_type" checked> Lista en blanco
+                    <input value="0" type="radio" name="assignment_type" checked> Lista en blanco
                 </label>
                 <br>
                 <label class="radio inline">
-                    <input type="radio" name="assignment_type"> Orden alfabetico
+                    <input value="1" type="radio" name="assignment_type"> Orden alfabetico
                 </label>
                 <br>
                 <label class="radio inline">
-                    <input type="radio" name="assignment_type"> Asignación aleatoria
+                    <input value="2" type="radio" name="assignment_type"> Asignación aleatoria
                 </label>
                 <br>
                 <p class="help-block text-danger">
@@ -53,7 +52,9 @@
                 <p class="help-block text-danger">
                     <strong>{{ $errors->first('email') }}</strong></p>
             </div>
-            <div class="field" hidden id="allow_type">
+
+
+            <div class="field allow_type" hidden>
                 <ul>
                     <li>
                         <label class="radio inline">
@@ -86,8 +87,14 @@
                 <p class="help-block text-danger">
                     <strong>{{ $errors->first('email') }}</strong></p>
             </div>
+            <br>
+            <div class="field allow_type" hidden>
+                {!! Form::label('max_date','Fecha límite',['class'=>'main_label']) !!}
+                {!! Form::text('max_date','',['id'=>'max_date','class'=>'form-control login']) !!}
+                <p class="help-block text-danger">
+                    <strong>{{ $errors->first('subject') }}</strong></p>
+            </div>
         </div>
-        {!! Form::close() !!}
     </div>
 </div>
 
@@ -95,4 +102,9 @@
 @push('js')
 {!! Html::script('assets/js/bootstrap_slider.js') !!}
 {!! Html::script('assets/js/step2.js') !!}
+{!! Html::script('assets/js/bootstrap-datepicker.js') !!}
+{!! Html::script('assets/js/bootstrap-datepicker.es.min.js') !!}
+<script>
+
+</script>
 @endpush

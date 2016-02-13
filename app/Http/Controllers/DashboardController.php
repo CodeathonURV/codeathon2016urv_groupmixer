@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests;
+use App\Commands\Step2Command;
 use App\User;
-use Bican\Roles\Models\Role;
 use Input;
 use Redirect;
+use Request;
+use Validator;
 use View;
-use Excel;
 
 class DashboardController extends Controller
 {
@@ -17,44 +17,41 @@ class DashboardController extends Controller
      * @var User
      */
     private $user;
+    /**
+     * @var Step2Command
+     */
+    private $step2Command;
 
     /**
      * DashboardController constructor.
-     * @param User $user
+     * @param Step2Command $step2Command
      */
-    public function __construct(User $user)
+    public function __construct(Step2Command $step2Command)
     {
-        $this->user = $user;
+        $this->step2Command = $step2Command;
     }
 
-    public function index()
+    public function createStep1()
     {
         return View::make('dashboard.index');
     }
 
-
-    public function createStep2()
-    {
-
-        $posts = $this->user->whereHas('roles', function ($query) {
-            $query->orWhere('roles.id', '=', '2');
-            $query->where('roles.id', '=', '1');
-        })->get(['id', 'name']);
-
-
-        $teachers = [];
-        foreach ($posts as $post) {
-            $teachers[$post->id] = $post->name;
-
-        }
-
-
-        return View::make('dashboard.step2', compact('teachers'));
-    }
-
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function saveStep1()
     {
+
+        $validator = Validator::make(Input::all(), [
+            'file' => 'mimes:xls,xlms,xlsx'
+        ], [
+            'file.mimes'=>'Por favor, introduzca un archivo con los formatos :values.'
+        ]);
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator->errors());
+        }
+
         /* Excel::load(base_path() . '/public/files/test.xls', function ($reader) {
 
 
@@ -67,6 +64,20 @@ class DashboardController extends Controller
 
         return Redirect::route('create_step_2');
     }
+
+
+    public function createStep2()
+    {
+        $teachers = $this->step2Command->getListTeacherAndCoordinators();
+        return View::make('dashboard.step2', compact('teachers'));
+    }
+
+
+    public function saveStep2()
+    {
+        dd(Input::all());
+    }
+
 
     /**
      *

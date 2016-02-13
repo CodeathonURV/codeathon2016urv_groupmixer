@@ -2,6 +2,7 @@
 @push('css')
 {!! Html::style('assets/css/dashboard.css') !!}
 {!! Html::style('assets/css/bootrstrap_slider.css') !!}
+{!! Html::style('assets/css/bootstrap-datepicker.standalone.css') !!}
 @endpush
 @section('title', 'Index')
 
