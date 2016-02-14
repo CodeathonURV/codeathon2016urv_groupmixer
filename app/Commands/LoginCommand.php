@@ -5,8 +5,6 @@ namespace App\Commands;
 use App\Formatters\UserFormatter;
 use App\User;
 use Auth;
-use Hash;
-use Redirect;
 
 class LoginCommand
 {

@@ -174,6 +174,16 @@ class Step2Command
         $chunks = array_chunk($students, ceil(count($students) / $numberGroups));
 
 
+        $this->saveGroups($assignment, $chunks);
+
+    }
+
+    /**
+     * @param Assignment $assignment
+     * @param $chunks
+     */
+    private function saveGroups(Assignment $assignment, $chunks)
+    {
         foreach ($chunks as $groupNumber => $chunk) {
             $currentGroup = $assignment->groups[$groupNumber];
             foreach ($chunk as $item) {
@@ -182,16 +192,5 @@ class Step2Command
                 $currentGroup->students()->attach($user->id);
             }
         }
-
-        /* foreach ($assignment->groups as $group) {
-             foreach ($chunks as $chunk) {
-                 foreach ($chunk as $item) {
-                     $dni = $item[1];
-                     $user = $this->user->where('dni', $dni)->first();
-                     $group->students()->attach($user->id);
-                 }
-             }
-
-         }*/
     }
 }

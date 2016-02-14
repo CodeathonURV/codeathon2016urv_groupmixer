@@ -7,7 +7,6 @@ namespace App\Commands;
 use App\Assignment;
 use App\Group;
 use App\User;
-use Cache;
 
 class Step3Command
 {

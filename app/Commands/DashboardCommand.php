@@ -6,7 +6,6 @@ namespace App\Commands;
 
 use App\Assignment;
 use App\Requests;
-use Auth;
 use Config;
 
 class DashboardCommand

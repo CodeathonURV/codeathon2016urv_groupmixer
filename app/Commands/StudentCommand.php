@@ -10,7 +10,6 @@ namespace App\Commands;
 
 
 use App\Assignment;
-use App\Group;
 use App\Requests;
 use App\User;
 use Auth;
