@@ -26,7 +26,9 @@
                         <td> {{$group->assignment->teacher->name}}</td>
 
                         <td style="text-align: center;">
-                            <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
+                            <a onclick="changeGroup({{$group->id}},{{$group->assignment->id}});" href="#" role="button"
+                               class="btn btn-warning"
+                               data-toggle="modal">
                                 Cambiar
                             </a>
 
@@ -40,3 +42,51 @@
     </div>
     @include('student.change_modal')
 </div>
+
+@push('js')
+<script>
+
+
+    function changeGroup(groupId, assignmentId) {
+
+
+        $.ajax({
+            data: {
+                group_id: groupId,
+                assigment_id: assignmentId
+            },
+            url: '/get_user_groups',
+            type: 'post',
+            beforeSend: function () {
+                //$("#resultado").html("Procesando, espere por favor...");
+            },
+            success: function (response) {
+                if (typeof response !== "undefined") {
+                    $('#myModal .modal-body').html(response);
+                    $('#myModal').modal('toggle');
+                }
+
+            }
+        });
+
+
+        /* $('##myModal').modal('toggle');
+         if (confirm('¿Estas seguro de borrarlo?')) {
+         $.ajax({
+         data: {id: id},
+         url: 'delete_assignment',
+         type: 'post',
+         beforeSend: function () {
+         //$("#resultado").html("Procesando, espere por favor...");
+         },
+         success: function (response) {
+         if (typeof response !== "undefined") {
+         $("#assignment_" + response).remove();
+         }
+
+         }
+         });
+         }*/
+    }
+
+</script>

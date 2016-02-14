@@ -3,6 +3,8 @@
 namespace App\Formatters\RowReader;
 
 
+use \App\User;
+
 class TextFormatter extends AbstractFormatterReader
 {
 
@@ -17,7 +19,6 @@ class TextFormatter extends AbstractFormatterReader
         $result = [];
         foreach ($body as $item) {
             $result[] = explode("\t", $item);
-
         }
 
         return [$head, $result];

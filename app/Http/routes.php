@@ -22,7 +22,6 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-\DB::enableQueryLog();
 Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['auth', 'teacher']], function () {
@@ -43,6 +42,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['auth', 'student']], function () {
         Route::get('/student', ['as' => 'index_student', 'uses' => 'StudentController@index']);
+        Route::post('/get_user_groups', ['as' => 'get_user_groups', 'uses' => 'StudentController@getUserGroups']);
+
     });
 
 

@@ -9,6 +9,7 @@
 namespace App\Commands;
 
 
+use App\Assignment;
 use App\Group;
 use App\User;
 use Auth;
@@ -20,19 +21,20 @@ class StudentCommand
      */
     private $user;
     /**
-     * @var Group
+     * @var Assignment
      */
-    private $group;
+    private $assignment;
+
 
     /**
      * StudentCommand constructor.
      * @param User $user
-     * @param Group $group
+     * @param Assignment $assignment
      */
-    public function __construct(User $user, Group $group)
+    public function __construct(User $user, Assignment $assignment)
     {
         $this->user = $user;
-        $this->group = $group;
+        $this->assignment = $assignment;
     }
 
 
@@ -59,6 +61,15 @@ class StudentCommand
             ];
         }
         dd($result);
+
+    }
+
+    public function getGroupsUnAssigned($groupId, $assigmentId)
+    {
+        $assigment = $this->assignment->find($assigmentId);
+
+
+        return $assigment->groups()->where('id', '<>', $groupId)->get();
 
     }
 }

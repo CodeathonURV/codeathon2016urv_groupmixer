@@ -120,9 +120,6 @@ class Step2Command
 
         foreach ($groups as $group) {
             $this->group->create($group);
-
-            //$assignment->groups()->attach($groupEntity->id);
-
         }
 
 
@@ -169,16 +166,27 @@ class Step2Command
                 $students = $data[1];
                 break;
         }
+        $chunks = array_chunk($students, ceil(count($students) / $numberGroups));
+        
 
-        $chunks = array_chunk($students, $numberGroups);
-
-        foreach ($assignment->groups as $group) {
-            foreach ($chunks as $chunk) {
-                $chunk[1] = '48772386n';
-                $user = $this->user->where('dni', $chunk[1])->first();
-                $group->students()->attach($user->id);
+        foreach ($chunks as $groupNumber => $chunk) {
+            $currentGroup = $assignment->groups[$groupNumber];
+            foreach ($chunk as $item) {
+                $dni = $item[1];
+                $user = $this->user->where('dni', $dni)->first();
+                $currentGroup->students()->attach($user->id);
             }
-
         }
+
+        /* foreach ($assignment->groups as $group) {
+             foreach ($chunks as $chunk) {
+                 foreach ($chunk as $item) {
+                     $dni = $item[1];
+                     $user = $this->user->where('dni', $dni)->first();
+                     $group->students()->attach($user->id);
+                 }
+             }
+
+         }*/
     }
 }
