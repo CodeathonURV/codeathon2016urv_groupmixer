@@ -11,6 +11,7 @@ namespace App\Commands;
 
 use App\Assignment;
 use App\Group;
+use App\Requests;
 use App\User;
 use Auth;
 
@@ -24,17 +25,23 @@ class StudentCommand
      * @var Assignment
      */
     private $assignment;
+    /**
+     * @var Requests
+     */
+    private $requests;
 
 
     /**
      * StudentCommand constructor.
      * @param User $user
      * @param Assignment $assignment
+     * @param Requests $requests
      */
-    public function __construct(User $user, Assignment $assignment)
+    public function __construct(User $user, Assignment $assignment, Requests $requests)
     {
         $this->user = $user;
         $this->assignment = $assignment;
+        $this->requests = $requests;
     }
 
 
@@ -47,20 +54,40 @@ class StudentCommand
 
     /**
      * @param $userId
+     * @return array
      */
     public function getRequests($userId)
     {
-        $result = [];
-        $user = Auth::user();
 
+        $user = $this->user->find($userId);
+
+
+        $requests = [];
 
         foreach ($user->groups as $group) {
-            dd($group->assignments());
-            $result[] = [
-                'group_name' => $group->name
-            ];
+            $request = $this->requests->where('group_to_id', $group->id)->get();
+
+            foreach ($request as $item) {
+                $requests[] = $item;
+            }
+
         }
-        dd($result);
+        return $requests;
+
+        /*
+         dd($requests);
+         dd($user->groups);
+         $requests = [];
+         $user = Auth::user();
+
+
+         foreach ($user->groups as $group) {
+             dd($group->assignments());
+             $requests[] = [
+                 'group_name' => $group->name
+             ];
+         }
+         dd($requests);*/
 
     }
 
@@ -71,5 +98,17 @@ class StudentCommand
 
         return $assigment->groups()->where('id', '<>', $groupId)->get();
 
+    }
+
+    public function requestChange($group_to_id, $group_from_id, $studentId)
+    {
+        $result = $this->requests->create(
+            [
+                'group_from_id' => $group_from_id,
+                'group_to_id' => $group_to_id,
+                'student_id' => $studentId,
+            ]
+        );
+        return $result;
     }
 }

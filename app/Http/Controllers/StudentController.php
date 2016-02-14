@@ -35,9 +35,19 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $userAssignment = $this->studentCommand->getAssignments(Auth::user()->id);
+        $userId = Auth::user()->id;
+        $userAssignment = $this->studentCommand->getAssignments($userId);
+        $requests = $this->studentCommand->getRequests($userId);
 
         return View::make('student.index', compact('requests', 'userAssignment'));
+    }
+
+    public function changeGroup()
+    {
+        $group_to_id = Input::get('group_to_id');
+        $group_from_id = Input::get('group_from_id');
+        $studentId = Auth::user()->id;
+        $this->studentCommand->requestChange($group_to_id, $group_from_id, $studentId);
     }
 
     public function getUserGroups()
@@ -46,6 +56,9 @@ class StudentController extends Controller
         $assigmentId = Input::get('assigment_id');
         $groups = $this->studentCommand->getGroupsUnAssigned($groupId, $assigmentId);
 
-        return View::make('student.table_modal_content', compact('groups'));
+        return View::make('student.table_modal_content', [
+            'groups' => $groups,
+            'groupFromId' => $groupId
+        ]);
     }
 }

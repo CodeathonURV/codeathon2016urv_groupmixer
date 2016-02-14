@@ -8,6 +8,7 @@
                 @endforeach
             </select>
         </td>
+        <input class="hidden" id="group_from_id" name="group_from_id" value="{{$groupFromId}}">
         <td style="text-align: center;">
             <button id="button_change" class="btn btn-success">Pedir cambio</button>
         </td>
@@ -18,6 +19,24 @@
 <script>
     $('#button_change').click(function () {
         var groupSelect = $('#change_group_select').val();
-        alert(groupSelect);
+        var oldGroup = $('#group_from_id').val();
+        $.ajax({
+            data: {
+                group_from_id: oldGroup,
+                group_to_id: groupSelect
+            },
+            url: '/change_group',
+            type: 'post',
+            beforeSend: function () {
+                //$("#resultado").html("Procesando, espere por favor...");
+            },
+            success: function (response) {
+                /* if (typeof response !== "undefined") {
+                 $('#myModal .modal-body').html(response);
+                 $('#myModal').modal('toggle');
+                 }*/
+
+            }
+        });
     });
 </script>

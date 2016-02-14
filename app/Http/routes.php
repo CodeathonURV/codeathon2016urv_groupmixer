@@ -43,6 +43,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['middleware' => ['auth', 'student']], function () {
         Route::get('/student', ['as' => 'index_student', 'uses' => 'StudentController@index']);
         Route::post('/get_user_groups', ['as' => 'get_user_groups', 'uses' => 'StudentController@getUserGroups']);
+        Route::post('/change_group', ['as' => 'change_group', 'uses' => 'StudentController@changeGroup']);
 
     });
 

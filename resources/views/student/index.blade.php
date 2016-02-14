@@ -46,6 +46,10 @@
                                 <div class="pricing-plans plans-1">
                                     @include('student.assignments',['assignments'=>$userAssignment])
                                 </div>
+                                <div class="pricing-plans plans-1">
+
+                                    @include('student.requests',['requests'=>$requests])
+                                </div>
                             </div>
                         </div>
                     </div>

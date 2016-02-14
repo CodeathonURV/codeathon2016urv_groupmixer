@@ -24,6 +24,9 @@ class CreateRequestTable extends Migration
             $table->integer('student_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('users');
 
+            $table->integer('student_accept_id')->unsigned()->nullable()->default(null);
+            $table->foreign('student_accept_id')->references('id')->on('users');
+
             $table->timestamps();
         });
     }
