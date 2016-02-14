@@ -21,9 +21,7 @@ class PasswordController extends Controller
     use ResetsPasswords;
 
     /**
-     * Create a new password controller instance.
-     *
-     * @return void
+     * PasswordController constructor.
      */
     public function __construct()
     {

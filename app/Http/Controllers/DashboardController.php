@@ -8,24 +8,17 @@ use App\Commands\Step1Command;
 use App\Commands\Step2Command;
 use App\Commands\Step3Command;
 use App\Http\Requests\Step1Request;
-use App\Http\Requests\Step2Request;
-use App\User;
-use Cache;
 use Config;
 use Exception;
 use Input;
 use Redirect;
 use Request;
-use Session;
 use Validator;
 use View;
 
 class DashboardController extends Controller
 {
-    /**
-     * @var User
-     */
-    private $user;
+
     /**
      * @var Step2Command
      */
@@ -134,6 +127,7 @@ class DashboardController extends Controller
     }
 
     /**
+     * @param $id
      * @return \Illuminate\Contracts\View\View
      */
     public function createStep3($id)

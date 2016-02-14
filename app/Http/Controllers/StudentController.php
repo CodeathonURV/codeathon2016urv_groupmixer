@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 
-use App\Commands\DashboardCommand;
 use App\Commands\StudentCommand;
 use App\Http\Requests;
 use Auth;
@@ -12,10 +11,7 @@ use View;
 
 class StudentController extends Controller
 {
-    /**
-     * @var DashboardCommand
-     */
-    private $dashboardCommand;
+
     /**
      * @var StudentCommand
      */
