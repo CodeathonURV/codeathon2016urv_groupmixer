@@ -1,7 +1,7 @@
 <table class="table table-striped table-bordered table_groups">
     <thead>
     <tr>
-        <th> Nombre de grupo</th>
+        <th> Nombre de grup</th>
         <th> Descripción/ Horario</th>
         <th> Profesor</th>
     </tr>

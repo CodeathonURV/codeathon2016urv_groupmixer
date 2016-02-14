@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -25,13 +26,15 @@
 Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['auth']], function () {
-        Route::get('/', ['as' => 'dashboard', 'uses' => 'DashboardController@createStep1']);
+        Route::get('/', ['as' => 'index', 'uses' => 'DashboardController@index']);
+
+        Route::get('/step_1', ['as' => 'create_step_1', 'uses' => 'DashboardController@createStep1']);
         Route::post('/step_1', ['as' => 'save_step_1', 'uses' => 'DashboardController@saveStep1']);
 
         Route::get('/step_2', ['as' => 'create_step_2', 'uses' => 'DashboardController@createStep2']);
         Route::post('/step_2', ['as' => 'save_step_2', 'uses' => 'DashboardController@saveStep2']);
 
-        Route::get('/step_3', ['as' => 'create_step_3', 'uses' => 'DashboardController@createStep3']);
+        Route::get('/step_3/{id}', ['as' => 'create_step_3', 'uses' => 'DashboardController@createStep3']);
 
     });
 

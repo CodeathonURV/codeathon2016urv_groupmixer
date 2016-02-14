@@ -12,7 +12,7 @@
 
             <div class="field ">
                 {!! Form::label('number_groups','Numero de grupos',['class'=>'main_label']) !!}
-                {!! Form::number('number_groups','',['min'=>Config::get('formatter.minGroups'),'max'=>Config::get('formatter.maxGroups'),'id'=>'number_groups','placeholder'=>'Numero de grupos','class'=>'login']) !!}
+                {!! Form::number('number_groups',Config::get('formatter.minGroups'),['min'=>Config::get('formatter.minGroups'),'max'=>Config::get('formatter.maxGroups'),'id'=>'number_groups','placeholder'=>'Numero de grupos','class'=>'login']) !!}
                 <p class="help-block text-danger">
                     <strong>{{ $errors->first('number_groups') }}</strong>
                 </p>

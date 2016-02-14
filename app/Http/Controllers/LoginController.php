@@ -58,7 +58,7 @@ class LoginController extends Controller
         }
 
         if ($this->loginCommand->checkLogin($request->all())) {
-            return Redirect::route('dashboard');
+            return Redirect::route('index');
         } else {
             return Redirect::back();
         }

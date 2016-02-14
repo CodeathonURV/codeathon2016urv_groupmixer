@@ -347,5 +347,9 @@ ul li {
 }
 
 .slider-horizontal {
-    width: 10em!important;
+    width: 10em !important;
+}
+
+.table_groups th {
+    font-size: 1em;
 }

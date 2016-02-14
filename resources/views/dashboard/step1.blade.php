@@ -34,37 +34,10 @@
         <!-- /subnavbar-inner -->
     </div>
     <div class="main">
+
         <div class="main-inner">
             <div class="container">
-                <div class="row">
-                    <div class="span12">
-                        <div class="widget widget-table action-table">
-                            <div class="widget-header"><i class="icon-th-list"></i>
-                                <h3>Resumen</h3>
-                            </div>
-                            <div class="widget-content">
-                                <table class="table table-striped table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th> Nombre</th>
-                                        <th> Nº Grupos</th>
-                                        <th class="td-actions"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach ($assignments as $assignment)
-                                        <tr>
-                                            <td> {{ $assignment->name }}</td>
-                                            <td> {{$assignment->groups->count()}}</td>
-                                            <td class="td-actions"></td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @include('dashboard.components.create_assignment')
             </div>
 
         </div>
