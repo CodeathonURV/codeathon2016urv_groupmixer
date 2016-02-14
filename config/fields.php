@@ -20,7 +20,7 @@ return [
         [
             'title' => 'Grupos creados',
             'icon' => 'icon-table',
-            'href' => '#'
+            'href' => 'list_assignments'
         ]
     ]
 

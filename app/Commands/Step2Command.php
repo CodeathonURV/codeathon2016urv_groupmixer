@@ -41,10 +41,15 @@ class Step2Command
         $this->user = $user;
     }
 
+    public function getTeachers()
+    {
+        return $this->user->getTeacherAndCoordinators();
+    }
+
 
     public function getListTeacherAndCoordinators()
     {
-        $users = $this->user->getTeacherAndCoordinators();
+        $users = $this->user->getTeacherAndCoordinators(['id', 'name']);
         $teachers = [];
         foreach ($users as $user) {
             $teachers[$user->id] = $user->name;

@@ -16,15 +16,18 @@
                     <div class="span12">
                         <div class="widget widget-table action-table">
                             <div class="widget-header"><i class="icon-th-list"></i>
-                                <h3>Resumen</h3>
+                                <h3>Grupos creados</h3>
                             </div>
                             <div class="widget-content">
+                                <div style="padding: 1em;;">
+                                    {!! link_to_route('index','Volver a inicio',[],['class'=>'btn btn-warning']) !!}
+                                </div>
                                 <table class="table table-striped table-bordered">
                                     <thead>
                                     <tr>
                                         <th> Nombre</th>
                                         <th> Nº Grupos</th>
-                                        <th class="td-actions"></th>
+                                        <th class="td-actions">Eliminar</th>
                                     </tr>
                                     </thead>
                                     <tbody>

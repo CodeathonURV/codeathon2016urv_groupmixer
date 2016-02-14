@@ -16,10 +16,12 @@
                     <div class="span12">
                         <div class="widget widget-table action-table">
                             <div class="widget-header"><i class="icon-th-list"></i>
-                                <h3>Resumen</h3>
+                                <h3>Listado de profesores</h3>
                             </div>
                             <div class="widget-content">
-
+                                <div style="padding: 1em;;">
+                                    {!! link_to_route('index','Volver a inicio',[],['class'=>'btn btn-warning']) !!}
+                                </div>
                                 @include('lists.teacher.main_table')
                             </div>
                         </div>

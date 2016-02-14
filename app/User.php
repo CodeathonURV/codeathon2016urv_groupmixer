@@ -59,13 +59,20 @@ class User extends Authenticatable
         return $this;
     }
 
-    public function getTeacherAndCoordinators()
+    public function getTeacherAndCoordinators($filtered = null)
     {
         $users = $this->whereHas('roles', function ($query) {
             $query->orWhere('roles.id', '=', '2');
             $query->where('roles.id', '=', '1');
-        })->get(['id', 'name']);
+        });
+        if ($filtered) {
+            $users = $this->get($filtered);
+        } else {
+            $users = $this->get();
+        }
 
         return $users;
     }
+
+
 }

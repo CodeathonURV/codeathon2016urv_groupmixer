@@ -70,7 +70,7 @@ class DashboardController extends Controller
 
     public function listTeachers()
     {
-        $teachers = $this->step2Command->getListTeacherAndCoordinators();
+        $teachers = $this->step2Command->getTeachers();
 
         return View::make('lists.teachers', compact('teachers'));
     }
