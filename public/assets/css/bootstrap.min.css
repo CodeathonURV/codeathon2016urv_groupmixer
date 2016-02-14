@@ -2432,7 +2432,7 @@ table .span24 {
     background-image: -moz-linear-gradient(rgba(85, 85, 85, 0), rgba(0, 0, 0, 0.1));
     background-image: -o-linear-gradient(rgba(85, 85, 85, 0), rgba(0, 0, 0, 0.1));
     background-image: linear-gradient(rgba(85, 85, 85, 0), rgba(0, 0, 0, 0.1));
-    background-color: #1976D2;
+    background-color: #00ba8b;
     border-color: #464646 #464646 #1f1f1f;
     border-color: rgba(0, 0, 0, 0.05) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.15);
     color: white;
@@ -4421,9 +4421,10 @@ a.text-danger:focus, a.text-danger:hover {
     width: 50%;
 }
 
-textarea.table_row{
+textarea.table_row {
     width: 75%;
 }
-div.text_row_div{
-    margin-top;: 0.5em;
+
+div.text_row_div {
+    margin-top;: 0.5 em;
 }

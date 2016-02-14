@@ -19,9 +19,8 @@
                 </div>
                 <div class="control-group text-center">
                     <h6 class="bigstats"></h6>
-                    <a></a>
                     {!! link_to_route('create_step_1','Volver atrás',[],['class'=>'btn btn-warning']) !!}
-                    {!! Form::submit('Siguiente paso',['class'=>'btn btn-success']) !!}
+                    {!! Form::submit('Guardar',['class'=>'btn btn-success']) !!}
                 </div>
             </div>
             {!! Form::close() !!}
@@ -43,4 +42,5 @@
         });
     });
 
-</script>@endpush
+</script>
+@endpush

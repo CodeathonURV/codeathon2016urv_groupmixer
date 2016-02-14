@@ -24,7 +24,7 @@ class Step1Request extends Request
     public function rules()
     {
         return [
-            'file' => 'required_without_all:table_row|mimes:xls,xlms,xlsx',
+            'file' => 'required_without_all:table_row',
             'table_row' => 'required_without_all:file'
         ];
     }
@@ -32,7 +32,6 @@ class Step1Request extends Request
     public function messages()
     {
         return [
-            'file.mimes' => 'Por favor, introduzca un archivo con los formatos :values.',
             'file.required_without_all' => 'Por favor, introduzca un archivo con los formatos.',
             'table_row.required_without_all' => 'Por favor, introduzca un archivo con los formatos.',
         ];

@@ -48,7 +48,6 @@ Route::group(['middleware' => ['web']], function () {
 
     });
 
-
     Route::get('/login', ['as' => 'login.create', 'uses' => 'LoginController@createLogin']);
     Route::post('/login', ['as' => 'login.save', 'uses' => 'LoginController@saveLogin']);
     Route::get('/register', ['as' => 'register.create', 'uses' => 'LoginController@createRegister']);

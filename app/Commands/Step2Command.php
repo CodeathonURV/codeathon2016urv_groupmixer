@@ -167,7 +167,7 @@ class Step2Command
                 break;
         }
         $chunks = array_chunk($students, ceil(count($students) / $numberGroups));
-        
+
 
         foreach ($chunks as $groupNumber => $chunk) {
             $currentGroup = $assignment->groups[$groupNumber];

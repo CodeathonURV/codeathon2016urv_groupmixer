@@ -17,9 +17,8 @@ class XLSFormatter extends AbstractFormatterReader
         $result = [];
         Excel::load($file->getRealPath(), function ($reader) use (&$result) {
             foreach ($reader->toArray() as $sheet) {
-                // get sheet title
                 array_shift($sheet);
-                dd($sheet);
+                $sheet = array_values($sheet);
                 if (!empty($sheet[0]) && !empty($sheet[1]) && !empty($sheet[2])) {
                     $result[] = $sheet;
                 }
@@ -27,7 +26,6 @@ class XLSFormatter extends AbstractFormatterReader
 
             }
         });
-        dd(count($result));
         return [[], $result];
     }
 }

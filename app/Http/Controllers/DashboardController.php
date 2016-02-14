@@ -121,10 +121,8 @@ class DashboardController extends Controller
             [
                 'subject' => 'required|min:3',
                 'number_groups' => 'required|numeric|between:' . Config::get('formatter.minGroups') . ',' . Config::get('formatter.maxGroups'),
-                'assignment_type' => 'required|in:0,1,2',
-                'allow_group_changes' => 'required|in:0,1',
-                'change_type' => 'required_if:allow_group_changes,1',
-                'max_date' => 'required_if:allow_group_changes,1',
+                'assignment_type' => 'required|in:1,2',
+                'allow_group_changes' => 'required|in:0,1'
             ]
         );
         if ($validator->fails()) {

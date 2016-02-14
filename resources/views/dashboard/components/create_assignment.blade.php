@@ -9,7 +9,7 @@
                 <div class="tabbable">
                     {!! Form::open(['route'=>'save_step_1','enctype'=>'multipart/form-data']) !!}
                     <div>
-                        <h3 class="text-center">Seleccione que desea</h3>
+                        <h3 class="text-center">Seleccione que desea hacer</h3>
                         <br>
                         <div class="">
                             <table class="text-center button_selector_table">
@@ -38,6 +38,8 @@
                         <br>
                         <div class="control-group text-center">
                             <h6 class="bigstats"></h6>
+                            {!! link_to_route('index','Volver atrás',[],['class'=>'btn btn-warning']) !!}
+
                             {!! Form::submit('Siguiente paso',['class'=>'btn btn-success']) !!}
                         </div>
                     </div>
