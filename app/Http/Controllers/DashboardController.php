@@ -68,6 +68,13 @@ class DashboardController extends Controller
 
     }
 
+    public function listTeachers()
+    {
+        $teachers = $this->step2Command->getListTeacherAndCoordinators();
+
+        return View::make('lists.teachers', compact('teachers'));
+    }
+
     public function listAssignments()
     {
         $assignments = $this->dashboardCommand->getAssignmentPaginated();

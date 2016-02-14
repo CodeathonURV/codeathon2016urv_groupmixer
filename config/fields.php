@@ -4,19 +4,23 @@ return [
     'index_cards' => [
         [
             'title' => 'Crear nuevos grupos',
-            'icon' => ' icon-group'
+            'icon' => ' icon-group',
+            'href' => '#'
         ],
         [
             'title' => 'Buscar profesores',
-            'icon' => ' icon-book'
+            'icon' => ' icon-book',
+            'href' => 'list_teachers'
         ],
         [
             'title' => 'Buscar alumnos',
-            'icon' => ' icon-user'
+            'icon' => ' icon-user',
+            'href' => '#'
         ],
         [
             'title' => 'Grupos creados',
-            'icon' => 'icon-table'
+            'icon' => 'icon-table',
+            'href' => '#'
         ]
     ]
 

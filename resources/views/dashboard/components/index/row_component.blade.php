@@ -6,7 +6,8 @@
             </div>
         </div>
         <div class="plan-actions">
-            <a href="javascript:;" class="btn">{{ $section['title']}}</a>
+            <a href="{{$section['href']!='#'?route($section['href']):$section['href']}}"
+               class="btn">{{ $section['title']}}</a>
         </div>
     </div>
 </div>
