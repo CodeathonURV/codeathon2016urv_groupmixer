@@ -4,12 +4,14 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Cambiar grupo</h3>
     </div>
-    <div class="modal-body">
+    <div class="alert alert-success alert-dismissible fade in" role="alert">
 
+        <strong class="text-center">Holy guacamole!</strong> Best check yo self, you're not looking too good.
+    </div>
+    <div class="modal-body">
 
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-        <button class="btn btn-primary">Save changes</button>
     </div>
 </div>

@@ -13,11 +13,9 @@
     {!! Html::style('assets/css/style.css') !!}
 
     @stack('css')
-
     {{-- JS block --}}
     {!! Html::style('http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600') !!}
 </head>
-
 @yield('body')
 
 

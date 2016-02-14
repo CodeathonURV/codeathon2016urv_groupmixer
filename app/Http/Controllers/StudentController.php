@@ -50,6 +50,13 @@ class StudentController extends Controller
         $this->studentCommand->requestChange($group_to_id, $group_from_id, $studentId);
     }
 
+    public function executeChange()
+    {
+        $requestId = Input::get('request_id');
+        $this->studentCommand->executeChange($requestId);
+
+    }
+
     public function getUserGroups()
     {
         $groupId = Input::get('group_id');

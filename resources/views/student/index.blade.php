@@ -1,5 +1,6 @@
 @extends('layout.master')
 @push('css')
+{!! Html::style('assets/css/dashboard.css') !!}
 {!! Html::style('assets/css/plans.css') !!}
 @endpush
 @section('title', 'Index')

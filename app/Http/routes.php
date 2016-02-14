@@ -44,6 +44,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/student', ['as' => 'index_student', 'uses' => 'StudentController@index']);
         Route::post('/get_user_groups', ['as' => 'get_user_groups', 'uses' => 'StudentController@getUserGroups']);
         Route::post('/change_group', ['as' => 'change_group', 'uses' => 'StudentController@changeGroup']);
+        Route::post('/execute_group', ['as' => 'execute_group', 'uses' => 'StudentController@executeChange']);
 
     });
 

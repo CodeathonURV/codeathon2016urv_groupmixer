@@ -111,4 +111,20 @@ class StudentCommand
         );
         return $result;
     }
+
+    public function executeChange($requestId)
+    {
+        $request = $this->requests->find($requestId);
+        $userFrom = $this->user->find($request->student_id);
+        $userTo = Auth::user();
+
+        $userFrom->groups()->detach($request->group_from_id);
+        $userTo->groups()->detach($request->group_to_id);
+
+        $userFrom->groups()->attach($request->group_to_id);
+        $userTo->groups()->attach($request->group_from_id);
+        $request->delete();
+
+
+    }
 }
