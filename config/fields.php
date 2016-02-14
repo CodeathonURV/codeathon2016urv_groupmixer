@@ -12,11 +12,11 @@ return [
             'icon' => ' icon-book',
             'href' => 'list_teachers'
         ],
-        [
+        /*[
             'title' => 'Buscar alumnos',
             'icon' => ' icon-user',
             'href' => '#'
-        ],
+        ],*/
         [
             'title' => 'Grupos creados',
             'icon' => 'icon-table',

@@ -24,6 +24,19 @@
 */
 Route::group(['middleware' => ['web']], function () {
 
+    Route::group(['middleware' => ['auth']], function () {
+
+
+        Route::get('/logout', ['as' => 'logout', function () {
+            Auth::logout();
+            return Redirect::route('login.create');
+        }]);
+
+        Route::get('/', ['as' => 'index', 'uses' => 'DashboardController@index']);
+
+
+    });
+
     Route::group(['middleware' => ['auth', 'teacher']], function () {
         Route::get('/', ['as' => 'index', 'uses' => 'DashboardController@index']);
 

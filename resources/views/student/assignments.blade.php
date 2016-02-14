@@ -18,6 +18,7 @@
                 </thead>
                 <tbody>
 
+
                 @foreach ($assignments as $group)
                     <tr>
                         <td> {{ $group->assignment->name}}</td>

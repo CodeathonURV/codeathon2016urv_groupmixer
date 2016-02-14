@@ -19,7 +19,7 @@
                                 <h3>Resumen</h3>
                             </div>
                             <div class="widget-content">
-                                <div class="pricing-plans plans-4">
+                                <div class="pricing-plans plans-3">
                                     @foreach($sections as $section)
                                         @include('dashboard.components.index.row_component',['section'=>$section])
                                     @endforeach
