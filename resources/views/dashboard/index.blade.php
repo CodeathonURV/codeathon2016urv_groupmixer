@@ -53,10 +53,15 @@
                                     </thead>
                                     <tbody>
                                     @foreach ($assignments as $assignment)
-                                        <tr>
+                                        <tr id="assignment_{{$assignment->id}}">
                                             <td> {{ $assignment->name }}</td>
                                             <td> {{$assignment->groups->count()}}</td>
-                                            <td class="td-actions"></td>
+                                            <td class="td-actions">
+                                                <a href="javascript:deleteAssignment({{$assignment->id}});"
+                                                   class="btn btn-danger btn-small">
+                                                    <i class="btn-icon-only icon-remove"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -71,3 +76,27 @@
     </div>
 
 @endsection
+
+@push('js')
+<script>
+    function deleteAssignment(id) {
+        if (confirm('¿Estas seguro de borrarlo?')) {
+            $.ajax({
+                data: {id: id},
+                url: 'delete_assignment',
+                type: 'post',
+                beforeSend: function () {
+                    //$("#resultado").html("Procesando, espere por favor...");
+                },
+                success: function (response) {
+                    if (typeof response !== "undefined") {
+                        $("#assignment_" + response).remove();
+                    }
+
+                }
+            });
+        }
+    }
+
+</script>
+@endpush

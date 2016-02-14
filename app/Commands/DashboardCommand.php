@@ -27,4 +27,9 @@ class DashboardCommand
         return $this->assignment->paginate(15);
     }
 
+    public function deleteAssignment($id)
+    {
+        return $this->assignment->destroy($id);
+    }
+
 }

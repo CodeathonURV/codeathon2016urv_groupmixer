@@ -12,6 +12,7 @@ use App\Http\Requests\Step2Request;
 use App\User;
 use Cache;
 use Config;
+use Exception;
 use Input;
 use Redirect;
 use Request;
@@ -126,5 +127,19 @@ class DashboardController extends Controller
         $assignment = $this->step3Command->getParameters($id);
 
         return View::make('dashboard.step3', compact('assignment'));
+    }
+
+
+    /**
+     * @throws Exception
+     */
+    public function deleteAssignment()
+    {
+        if (Request::ajax()) {
+            $id = Input::get('id');
+            return $this->dashboardCommand->deleteAssignment($id);
+        } else {
+            throw new Exception();
+        }
     }
 }

@@ -36,6 +36,8 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get('/step_3/{id}', ['as' => 'create_step_3', 'uses' => 'DashboardController@createStep3']);
 
+        Route::post('/delete_assignment', ['as' => 'delete_assignment', 'uses' => 'DashboardController@deleteAssignment']);
+
     });
 
     Route::get('/login', ['as' => 'login.create', 'uses' => 'LoginController@createLogin']);
