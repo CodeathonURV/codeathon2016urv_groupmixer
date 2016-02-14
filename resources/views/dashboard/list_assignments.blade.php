@@ -1,6 +1,6 @@
 @extends('layout.master')
 @push('css')
-{!! Html::style('assets/css/plans.css') !!}
+{!! Html::style('assets/css/dashboard.css') !!}
 @endpush
 @section('title', 'Index')
 
@@ -43,14 +43,29 @@
                                 <h3>Resumen</h3>
                             </div>
                             <div class="widget-content">
-                                <div class="pricing-plans plans-4">
-                                    @foreach($sections as $section)
-                                        @include('dashboard.components.index.row_component',['section'=>$section])
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th> Nombre</th>
+                                        <th> Nº Grupos</th>
+                                        <th class="td-actions"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($assignments as $assignment)
+                                        <tr id="assignment_{{$assignment->id}}">
+                                            <td> {{ $assignment->name }}</td>
+                                            <td> {{$assignment->groups->count()}}</td>
+                                            <td class="td-actions">
+                                                <a href="javascript:deleteAssignment({{$assignment->id}});"
+                                                   class="btn btn-danger btn-small">
+                                                    <i class="btn-icon-only icon-remove"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
                                     @endforeach
-                                </div>
-                                <div class="pricing-plans plans-1">
-                                    @include('dashboard.components.index.petitions',['requests'=>$requests])
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

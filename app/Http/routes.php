@@ -27,6 +27,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/', ['as' => 'index', 'uses' => 'DashboardController@index']);
+        Route::get('/list_assignments', ['as' => 'list_assignments', 'uses' => 'DashboardController@listAssignments']);
 
         Route::get('/step_1', ['as' => 'create_step_1', 'uses' => 'DashboardController@createStep1']);
         Route::post('/step_1', ['as' => 'save_step_1', 'uses' => 'DashboardController@saveStep1']);

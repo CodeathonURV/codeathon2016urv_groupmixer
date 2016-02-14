@@ -58,11 +58,21 @@ class DashboardController extends Controller
         $this->dashboardCommand = $dashboardCommand;
     }
 
+
     public function index()
+    {
+        $data = $this->dashboardCommand->getViewFields();
+
+        return View::make('dashboard.index', $data);
+
+
+    }
+
+    public function listAssignments()
     {
         $assignments = $this->dashboardCommand->getAssignmentPaginated();
 
-        return View::make('dashboard.index', compact('assignments'));
+        return View::make('dashboard.list_assignments', compact('assignments'));
     }
 
     /**
