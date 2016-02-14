@@ -10,9 +10,9 @@ class Group extends Model
 
     protected $fillable = ['name', 'description', 'teacher_id'];
 
-    public function assignments()
+    public function assignment()
     {
-        return $this->belongsToMany(Assignment::class, 'assignament_group');
+        return $this->belongsTo(Assignment::class);
     }
 
     public function students()

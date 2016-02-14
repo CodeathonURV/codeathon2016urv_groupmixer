@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Commands\LoginCommand;
 use App\Commands\RoleCommand;
+use Auth;
 use Illuminate\Http\Request;
 use Redirect;
 use Validator;
@@ -58,7 +59,13 @@ class LoginController extends Controller
         }
 
         if ($this->loginCommand->checkLogin($request->all())) {
-            return Redirect::route('index');
+
+            if (Auth::user()->level() > 1) {
+                return Redirect::route('index');
+            } else {
+                return Redirect::route('index_student');
+            }
+
         } else {
             return Redirect::back();
         }

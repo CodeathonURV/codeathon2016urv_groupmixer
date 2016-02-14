@@ -25,7 +25,7 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['auth', 'teacher']], function () {
         Route::get('/', ['as' => 'index', 'uses' => 'DashboardController@index']);
 
         Route::get('/list_assignments', ['as' => 'list_assignments', 'uses' => 'DashboardController@listAssignments']);
@@ -37,11 +37,14 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('/step_2', ['as' => 'save_step_2', 'uses' => 'DashboardController@saveStep2']);
         Route::get('/step_3/{id}', ['as' => 'create_step_3', 'uses' => 'DashboardController@createStep3']);
 
-
-
         Route::post('/delete_assignment', ['as' => 'delete_assignment', 'uses' => 'DashboardController@deleteAssignment']);
 
     });
+
+    Route::group(['middleware' => ['auth', 'student']], function () {
+        Route::get('/student', ['as' => 'index_student', 'uses' => 'StudentController@index']);
+    });
+
 
     Route::get('/login', ['as' => 'login.create', 'uses' => 'LoginController@createLogin']);
     Route::post('/login', ['as' => 'login.save', 'uses' => 'LoginController@saveLogin']);
