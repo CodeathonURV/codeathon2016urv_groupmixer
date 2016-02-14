@@ -22,7 +22,7 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
+\DB::enableQueryLog();
 Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['auth', 'teacher']], function () {

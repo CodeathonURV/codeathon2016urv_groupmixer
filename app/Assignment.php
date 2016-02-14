@@ -17,7 +17,7 @@ class Assignment extends Model
      * @var array
      */
     protected $fillable = ['name', 'allow_change', 'teacher_id'];
-    
+
     /**
      * @var array
      */
@@ -26,7 +26,12 @@ class Assignment extends Model
 
     public function groups()
     {
-        return $this->belongsToMany(Group::class, 'assignament_group');
+        return $this->hasMany(Group::class, 'assignment_id', 'id');
+    }
+
+    public function teacher()
+    {
+        return $this->belongsTo(User::class, 'teacher_id', 'id');
     }
 
 }

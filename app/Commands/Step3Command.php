@@ -44,7 +44,6 @@ class Step3Command
     public function getParameters($id)
     {
         $assignments = $this->assignment->find($id);
-
         return $assignments;
     }
 

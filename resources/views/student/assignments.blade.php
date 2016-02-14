@@ -2,7 +2,7 @@
     <div class="plan green ">
         <div class="plan-header">
             <div class="plan-price plan-small">
-                <i class="mdi">Peticiones</i>
+                <i class="mdi">Asignaciones</i>
             </div>
         </div>
         <div class="plan-actions">
@@ -12,31 +12,31 @@
                     <th> Asignatura</th>
                     <th> Coordinador</th>
                     <th> Grupo</th>
-                    <th class="td-actions"></th>
+                    <th> Profesor titular</th>
+                    <th> Acción</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($assignments->groups as $group)
-                    {{dd($group->assignment())}}
 
-                    <tr id="request_{{$request['id']}}">
-                        <td> {{ $request['from']}}</td>
-                        <td> {{$request['from_group']}}</td>
+                @foreach ($assignments as $group)
+                    <tr>
+                        <td> {{ $group->assignment->name}}</td>
+                        <td> {{$group->coordinator->name}}</td>
                         <td> {{$group->name}}</td>
-                        <td> {{$request['subject']}}</td>
-                        <td class="td-actions">
-                            <a href="javascript:;" class="btn_small btn-small btn-success">
-                                <i class="btn-icon-only icon-ok"> </i>
+                        <td> {{$group->assignment->teacher->name}}</td>
+
+                        <td style="text-align: center;">
+                            <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
+                                Cambiar
                             </a>
-                            <a href="javascript:deleteAssignment({{$request['from']}});"
-                               class="btn_small btn-danger btn-small">
-                                <i class="btn-icon-only icon-remove"></i>
-                            </a>
+
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
+
         </div>
     </div>
+    @include('student.change_modal')
 </div>

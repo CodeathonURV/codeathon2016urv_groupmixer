@@ -5,7 +5,7 @@ return [
         [
             'title' => 'Crear nuevos grupos',
             'icon' => ' icon-group',
-            'href' => '#'
+            'href' => 'create_step_1'
         ],
         [
             'title' => 'Buscar profesores',

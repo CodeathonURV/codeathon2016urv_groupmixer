@@ -8,7 +8,7 @@ class Group extends Model
 {
     protected $table = 'groups';
 
-    protected $fillable = ['name', 'description', 'teacher_id'];
+    protected $fillable = ['name', 'description', 'teacher_id', 'assignment_id'];
 
     public function assignment()
     {
@@ -19,5 +19,12 @@ class Group extends Model
     {
         return $this->belongsToMany(User::class, 'group_student', 'group_id', 'student_id');
     }
+
+
+    public function coordinator()
+    {
+        return $this->belongsTo(User::class, 'teacher_id', 'id');
+    }
+
 
 }

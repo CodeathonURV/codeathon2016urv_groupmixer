@@ -142,7 +142,6 @@ class DashboardController extends Controller
     {
 
         $assignment = $this->step3Command->getParameters($id);
-
         return View::make('dashboard.step3', compact('assignment'));
     }
 

@@ -59,7 +59,6 @@ class LoginController extends Controller
         }
 
         if ($this->loginCommand->checkLogin($request->all())) {
-
             if (Auth::user()->level() > 1) {
                 return Redirect::route('index');
             } else {

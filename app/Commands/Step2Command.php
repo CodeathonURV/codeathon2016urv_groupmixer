@@ -103,32 +103,34 @@ class Step2Command
 
     public function save($all)
     {
-        $groups = $this->getGroups($all);
 
 
         $assignmentType = $all['assignment_type'];
         $assignmentName = $all['subject'];
         $allowChanges = !empty($all['allow_group_changes']);
         $teacher = Auth::user();
+
         $assignment = $this->assignment->create([
                 'name' => $assignmentName,
                 'allow_change' => $allowChanges,
                 'teacher_id' => $teacher->id
             ]
         );
+        $groups = $this->getGroups($all, $assignment->id);
 
         foreach ($groups as $group) {
-            $groupEntity = $this->group->create($group);
-            $assignment->groups()->attach($groupEntity->id);
+            $this->group->create($group);
+
+            //$assignment->groups()->attach($groupEntity->id);
 
         }
 
-        $this->generateCombination($assignmentType, Cache::get('flow'), $assignment);
 
+        $this->generateCombination($assignmentType, Cache::get('flow'), $assignment);
         return $assignment;
     }
 
-    private function getGroups(array $all)
+    private function getGroups(array $all, $assignmentId)
     {
         $resultArray = [];
         $numberGroups = $all['number_groups'];
@@ -138,6 +140,7 @@ class Step2Command
                 'name' => $all['group_name'][$i],
                 'description' => $all['description'][$i],
                 'teacher_id' => $all['teacher'][$i],
+                'assignment_id' => $assignmentId
 
             ];
         }
@@ -167,17 +170,14 @@ class Step2Command
                 break;
         }
 
-
         $chunks = array_chunk($students, $numberGroups);
 
         foreach ($assignment->groups as $group) {
-
             foreach ($chunks as $chunk) {
                 $chunk[1] = '48772386n';
                 $user = $this->user->where('dni', $chunk[1])->first();
                 $group->students()->attach($user->id);
             }
-
 
         }
     }

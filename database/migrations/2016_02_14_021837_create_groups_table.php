@@ -16,8 +16,12 @@ class CreateGroupsTable extends Migration
             $table->increments('id');
             $table->text('name');
             $table->text('description')->nullable();
+
             $table->integer('teacher_id')->unsigned();
             $table->foreign('teacher_id')->references('id')->on('users');
+
+            $table->integer('assignment_id')->unsigned();
+            $table->foreign('assignment_id')->references('id')->on('assignments');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -34,7 +34,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $userAssignment = $user = Auth::user();
+        $userAssignment = $this->studentCommand->getAssignments(Auth::user()->id);
+
         return View::make('student.index', compact('requests', 'userAssignment'));
     }
 }
