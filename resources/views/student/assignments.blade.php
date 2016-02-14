@@ -47,6 +47,8 @@
 @push('js')
 <script>
     function changeGroup(groupId, assignmentId) {
+        $('#message_request_ok').addClass('hidden');
+        console.log($('#message_request_ok'));
         $.ajax({
             data: {
                 group_id: groupId,
@@ -62,7 +64,6 @@
                     $('#myModal .modal-body').html(response);
                     $('#myModal').modal('toggle');
                 }
-
             }
         });
 

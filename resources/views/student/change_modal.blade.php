@@ -4,9 +4,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Cambiar grupo</h3>
     </div>
-    <div class="alert alert-success alert-dismissible fade in" role="alert">
+    <div id="message_request_ok" class="hidden alert alert-success alert-dismissible fade in " role="alert">
 
-        <strong class="text-center">Holy guacamole!</strong> Best check yo self, you're not looking too good.
+        <strong class="text-center">La petición se ha realizado!</strong>
     </div>
     <div class="modal-body">
 

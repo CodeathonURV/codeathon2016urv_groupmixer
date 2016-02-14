@@ -7,6 +7,9 @@
 
 @section('body')
     @include('layout.menu')
+    <div class="subnavbar">
+        <!-- /subnavbar-inner -->
+    </div>
     <div class="main">
         <div class="main-inner">
             <div class="container">
@@ -14,7 +17,7 @@
                     <div class="span12">
                         <div class="widget widget-table action-table">
                             <div class="widget-header"><i class="icon-th-list"></i>
-                                <h3>Resumen</h3>
+                                <h3>Inicio</h3>
                             </div>
                             <div class="widget-content">
                                 <div class="pricing-plans plans-1">

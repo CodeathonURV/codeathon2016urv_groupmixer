@@ -50,10 +50,10 @@
                     //$("#resultado").html("Procesando, espere por favor...");
                 },
                 success: function (response) {
-                    /* if (typeof response !== "undefined") {
-                     $('#myModal .modal-body').html(response);
-                     $('#myModal').modal('toggle');
-                     }*/
+                    if (typeof response !== "undefined") {
+                        $('#myModal .modal-body').html(response);
+                        $('#myModal').modal('toggle');
+                    }
                 }
             });
         }
